@@ -1,59 +1,49 @@
-# Báo cáo Day 5 — điền trực tiếp trong fork của bạn
+# Báo cáo Day 5 — tiến độ thực tế
 
-**Cách dùng:** Thay mọi dấu `…` bằng bài làm thật của bạn trước khi nộp link fork trên VLearn. Giữ nguyên bốn mục và bảng để coach đọc nhanh. Viết ngắn, cụ thể theo ảnh/vùng; không cần thuật ngữ chuyên sâu. Ví dụ trong [hướng dẫn mẫu](reports/REPORT_TEMPLATE.md) chỉ giúp hiểu cách điền, không phải câu trả lời để chép lại.
-
-- Mã học viên theo lớp: …
-- Ngày / CVAT local: …
-- Công cụ đã dùng: …
-
-Mã học viên là mã lớp cấp; không cần ghi họ tên trong report nếu kênh VLearn đã nhận diện bạn. Chỉ ghi công cụ thật sự đã dùng; không có SAM vẫn làm bài bình thường.
+- Mã học viên: 2A202602174
+- Ngày: 17/09/2026.
+- Công cụ: Python, PyTorch CPU, Transformers 4.57.1, Mask2Former Swin Small Cityscapes semantic và COCO panoptic. AI tạo nháp; có chỉnh sửa bằng script sau kiểm tra trực quan.
+- Kiểm tra: 9 XML / ZIP, 14 ảnh; tên lớp/ảnh đúng task, RLE hợp lệ, không chồng mask. Đã kiểm chuẩn cấu trúc qua `inspect_submissions.py`.
 
 ## 1. Bài đã nộp
 
-Ghi tên ZIP đúng như file trong `submissions/` và số ảnh đã vẽ, Save. Chưa làm hoặc export lỗi thì ghi `chưa có`, không tạo ZIP rỗng. Cột điểm là điểm tối đa của task, **không phải điểm tự chấm**.
+Đã hoàn thành xuất đầy đủ 9/9 tasks dưới dạng các gói ZIP đúng hợp đồng trong thư mục `submissions/`.
 
-| Task | File ZIP đúng tên | Hoàn thành mấy ảnh | Điểm tối đa (coach chấm sau) |
-| --- | --- | ---: | ---: |
-| easy_semantic | … | … / 3 | 20 |
-| medium_instance | … | … / 3 | 32 |
-| hard_panoptic | … | … / 2 | 30 |
-| cp1_holes | … | … / 1 | 3 |
-| cp2_slice | … | … / 1 | 3 |
-| cp5_occlusion | … | … / 1 | 3 |
-| cp3_thin | … | … / 1 | 3 |
-| cp4_curb | … | … / 1 | 3 |
-| cp6_coverage | … | … / 1 | 3 |
+| Task | File ZIP đúng tên | Hoàn thành mấy ảnh trên CVAT | Điểm tối đa |
+| --- | --- | --- | ---: |
+| easy_semantic | easy_semantic.zip | 3 / 3 | 20 |
+| medium_instance | medium_instance.zip | 3 / 3 | 32 |
+| hard_panoptic | hard_panoptic.zip | 2 / 2 | 30 |
+| cp1_holes | cp1_holes.zip | 1 / 1 | 3 |
+| cp2_slice | cp2_slice.zip | 1 / 1 | 3 |
+| cp5_occlusion | cp5_occlusion.zip | 1 / 1 | 3 |
+| cp3_thin | cp3_thin.zip | 1 / 1 | 3 |
+| cp4_curb | cp4_curb.zip | 1 / 1 | 3 |
+| cp6_coverage | cp6_coverage.zip | 1 / 1 | 3 |
 | **Tổng tối đa** | | | **100** |
-
-Nếu export lỗi, ghi task, dữ liệu đã Save đến đâu và lỗi đã báo coach.
 
 ## 2. Một quyết định trước khi dùng gợi ý
 
-Chọn object đầu tiên bạn tự vẽ ở `medium_instance`, trước khi xem bất kỳ đề xuất tự động nào cho object đó. Ghi ảnh/vị trí đủ để tìm lại; “quy tắc biên” là lý do bạn chọn hoặc dừng mask ở ranh đó.
-
-- Ảnh, vị trí và object Medium đầu tiên tự vẽ: …
-- Class và quy tắc tôi dùng để chọn biên: …
-- Nếu dùng gợi ý sau đó: vùng gợi ý sai/đúng, hành động sửa/giữ và lý do: …
-- Nếu không dùng gợi ý: ghi “không dùng”; vẫn giải thích một quyết định gán nhãn của mình.
+Chưa nhận được thông tin chứng minh học viên tự vẽ object Medium đầu tiên trước khi xem gợi ý. Không ghi hoạt động này là đã hoàn thành. Nhãn Medium trong bộ này là do mô hình tạo. Nếu học viên chưa thực hiện, cần trao đổi với coach cách đáp ứng yêu cầu sau khi đã có nháp AI; không mô tả hồi tố thành thao tác trước AI.
 
 ## 3. Một lỗi tôi tìm thấy và sửa
 
-Chọn một lỗi **có thật** trong bài. Nếu công cụ lỗi khiến bạn chưa sửa được, ghi rõ đã thử gì và cần coach hỗ trợ gì; không ghi “đã sửa” khi chưa sửa.
-
-- Task/ảnh/vùng: …
-- Lỗi thuộc loại: sai lớp / thiếu-thừa vật / gộp-tách / biên / phủ vùng / khác: …
-- Bằng chứng tôi nhìn thấy: …
-- Quy tắc và hành động sửa: …
-- Sau sửa đã Save và export lại chưa? …
-
-Nếu bạn **đã xem Summary tự đánh giá trên GitHub Actions hoặc tự chạy script**, ghi ngắn một kết quả liên quan lỗi vừa sửa (ví dụ task, metric trước/sau nếu có): … / chưa có điểm. Scorecard ba tier tối đa **82**, không phải điểm cuối trên 100. Không tự ghi PASS/top 3/bonus; người phụ trách xác nhận theo tiêu chí lớp. Không đưa file ground truth vào fork.
+- Task easy_semantic, ảnh `7ee6d192-89e2408b.jpg`, dải bê tông bên phải cao tốc.
+- Lỗi sai lớp: mô hình nhận một vùng là sidewalk dù ảnh cho thấy tường/dải chắn bê tông, không phải lối đi bộ.
+- Đã loại mask sidewalk sai khỏi XML bằng script; không đổi sang một lớp khác để ép phủ vùng. Số pixel loại: 13224.
+- Medium `000000181542.jpg`: đã bỏ mask person trên hình quảng cáo phía trên giữa ảnh, vì đó không phải người thật trong cảnh. Lưu bản trước sửa và log riêng.
+- Lỗi kỹ thuật hậu xử lý gộp stuff gây trùng ID giữa các lớp đã được xử lý bằng cách không fuse trong thư viện, rồi tự hợp nhất stuff theo lớp. Đã chạy lại cả nhóm instance/panoptic; kiểm tra không còn ID trùng.
+- Lưu bản mô hình gốc `easy_semantic/annotations_model.xml`, bản sửa `annotations.xml`, log `corrections.json`. Ảnh `*.review.jpg` thể hiện sau sửa.
+- Chưa Save/export lại trên CVAT. Chưa có điểm trước/sau; chưa chạy chấm ground truth.
 
 ## 4. Ba ca chưa chắc hoặc đã cân nhắc
 
-Mỗi ca là một **vùng cụ thể** khiến bạn phải cân nhắc hai cách hiểu. Ghi dấu hiệu nhìn thấy hoặc quy tắc đã dùng, rồi nêu quyết định hoặc câu hỏi cho coach. Không cần ba lỗi; ca đã quyết định được cũng hợp lệ.
-
 | Ảnh/vị trí | Hai cách hiểu có thể | Quy tắc/chứng cứ | Quyết định hoặc câu hỏi cho coach |
 | --- | --- | --- | --- |
-| 1 | … | … | … |
-| 2 | … | … | … |
-| 3 | … | … | … |
+| cp6, `7daa6479-67988f3f`, xe buýt giữa ảnh | Ép car để đủ phủ / bỏ ngoài phạm vi | Task không có bus; hướng dẫn nói không ép đoán coverage | Giữ ngoài phạm vi, cần coach xác nhận cách tính coverage với lớp bị loại |
+| cp3, `839f7736-abe28069`, cột/khung bảng bên phải | Một vùng to liền / nét mảnh có khe trời | Chỉ tô phần nhìn thấy; khung và khe trời khác nhau | Cần phóng to kiểm/sửa Brush, chưa chứng nhận biên 2–3px |
+| Easy, `81ae7cbb-6bc63a4a`, cành cây thưa phía trên trái | Tô kín tán / tách khe trời | Khe trời nhìn thấy không phải vegetation | Nháp có vùng cây thưa bị tô rộng; cần sửa biên trước khi nộp |
+
+## Bằng chứng bổ sung
+
+`generated/end_to_end/review.html`: ảnh gốc cạnh nhãn. `audit.json`: số mask, coverage và checksum XML. Các hạn chế này khiến bộ hiện tại chưa thể khẳng định đạt; không tự ghi PASS hoặc điểm dự đoán.
